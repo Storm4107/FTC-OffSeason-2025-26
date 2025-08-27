@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 @Autonomous(name = "SensorTest")
 public class SensorTest extends OpMode {
 
-    private DcMotorEx auxMotor;
+    private DcMotorEx Motor;
 
     private TouchSensor TouchSensor;
 
@@ -20,20 +20,20 @@ public class SensorTest extends OpMode {
     public void init() {
 
 
-        auxMotor = hardwareMap.get(DcMotorEx.class, "auxMotor");
+        Motor = hardwareMap.get(DcMotorEx.class, " Motor");
         TouchSensor = hardwareMap.get(TouchSensor.class, "TouchSensor");
 
-        auxMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        Motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
     }
 
     @Override
     public void loop() {
-        if (TouchSensor.isPressed()) {
-            auxMotor.setPower(0);
+        if (gamepad1.b)    {
+            Motor.setPower(0);
         }   else {
-            auxMotor.setPower(.5);
+            Motor.setPower(.5);
         }
 
     }
